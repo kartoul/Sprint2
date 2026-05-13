@@ -1,0 +1,40 @@
+// ELEMENTOS HTML
+const videoElemento = document.getElementById("video");
+const botaoFoto = document.querySelector(".btnTirarFoto");
+const canvas = document.getElementById("canvas");
+
+async function configurarCamera() {
+    try {
+        const midia = await navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: "environment"
+            },
+            audio: false
+        });
+
+        videoElemento.srcObject = midia;
+        await videoElemento.play();
+
+    } catch (erro) {
+        console.error("Erro ao acessar câmera:", erro);
+    }
+}
+
+configurarCamera();
+
+botaoFoto.addEventListener("click", () => {
+
+    const context = canvas.getContext("2d");
+
+    canvas.width = videoElemento.videoWidth;
+    canvas.height = videoElemento.videoHeight;
+
+    context.setTransform(1, 0, 0, 1, 0, 0);
+
+    context.translate(canvas.width, 0);
+    context.scale(-1, 1);
+
+    context.filter = "contrast(1.2) grayscale(0.1)";
+
+    context.drawImage(videoElemento, 0, 0, canvas.width, canvas.height);
+});
