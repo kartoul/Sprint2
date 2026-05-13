@@ -9,7 +9,6 @@ async function configurarCamera() {
             video: {
                 facingMode: "environment"
             },
-            audio: false
         });
 
         videoElemento.srcObject = midia;
@@ -30,9 +29,6 @@ botaoFoto.addEventListener("click", () => {
     canvas.height = videoElemento.videoHeight;
 
     context.setTransform(1, 0, 0, 1, 0, 0);
-
-    context.translate(canvas.width, 0);
-    context.scale(-1, 1);
 
     context.filter = "contrast(1.2) grayscale(0.1)";
 
