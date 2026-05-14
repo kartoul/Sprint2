@@ -66,27 +66,30 @@ main{
 
 .lupa{
     position:absolute;
-    right:7px;
-    bottom:170px;
-    width:70px;
-    height:70px;
+    right:20px;
+    bottom:140px;
+    width:60px;
+    height:60px;
     border-radius:50%;
-    background-color:var(--bgColor3);
+    background-color:rgba(70,70,70,0.8);
     display:flex;
     justify-content:center;
     align-items:center;
-    z-index:15;
+    z-index:20;
+    backdrop-filter:blur(5px);
 }
 
 .lupa a{
+    width:100%;
+    height:100%;
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
 .lupa img{
-    width:38px;
-    height:38px;
+    width:32px;
+    height:32px;
     object-fit:contain;
 }
 
